@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
 public class BaseTest {
-    private WebDriver driver;
+    private static WebDriver driver;
 
     @BeforeEach
     public void setUp() {
@@ -21,7 +21,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    WebDriver getDriver(){
+    public static WebDriver getDriver(){
         return driver;
     }
 

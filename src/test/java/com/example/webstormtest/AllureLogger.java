@@ -12,4 +12,10 @@ public class AllureLogger {
     public void info(String logText){
         logger.info(logText);
     }
+
+    @Step("{logText}")
+    public void infoWithScreenshot(String logText){
+        logger.info(logText);
+        AllureAttachmentManager.screenshot();
+    }
 }
