@@ -29,7 +29,7 @@ public class WebStormDownloadPage {
         LOG.infoWithScreenshot("Клик по кнопке dmg");
     }
     public boolean checkIfSiliconDmgClikable(){
-        LOG.infoWithScreenshot("Проверка, что кнопка .dmg (Apple Silicon) активна");
+        LOG.info("Проверка, что кнопка .dmg (Apple Silicon) активна");
         return siliconDownload.isEnabled();
     }
     public WebStormDownloadPage(WebDriver driver){
