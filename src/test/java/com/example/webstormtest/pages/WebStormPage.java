@@ -20,13 +20,13 @@ public class WebStormPage {
     @FindBy(xpath = "//a[@href='/webstorm/buy/']")
     public WebElement prisingButton;
 
-    public Boolean checkIfDownloadButtonIsClickable(){
-        LOG.info("Проверка активности кнопки загрузки");
-        return downloadButton.isEnabled();
-    }
     public WebStormPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+    public Boolean checkIfDownloadButtonIsClickable(){
+        LOG.info("Проверка активности кнопки загрузки");
+        return downloadButton.isEnabled();
     }
 
     public void transDownloadButton(){

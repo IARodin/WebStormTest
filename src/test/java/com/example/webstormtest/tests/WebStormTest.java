@@ -21,6 +21,7 @@ public class WebStormTest extends BaseTest{
         super.setUp();
         getDriver().get("https://www.jetbrains.com/webstorm/");
         WebStormPage = new WebStormPage(getDriver());
+        WebStormDownloadPage = new WebStormDownloadPage(getDriver());
 
     }
     @Test
