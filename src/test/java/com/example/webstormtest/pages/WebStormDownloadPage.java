@@ -18,6 +18,10 @@ public class WebStormDownloadPage {
     @FindBy(xpath = "//span[contains(text(), '.dmg (Apple Silicon)')]")
     private WebElement siliconDownload;
 
+    public WebStormDownloadPage(WebDriver driver){
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public void switchToMacOSTab(){
         macOSTab.click();
@@ -28,12 +32,9 @@ public class WebStormDownloadPage {
         dmgButton.click();
         LOG.infoWithScreenshot("Клик по кнопке dmg");
     }
-    public boolean checkIfSiliconDmgClikable(){
+    public Boolean checkIfSiliconDmgClikable(){
         LOG.info("Проверка, что кнопка .dmg (Apple Silicon) активна");
         return siliconDownload.isEnabled();
     }
-    public WebStormDownloadPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
+
 }

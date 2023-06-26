@@ -15,18 +15,14 @@ public class WebStormPage {
     private WebElement downloadButton;
     @FindBy(xpath = "//*[@id=\"js-menu-second-desktop\"]/a[6]")
     private WebElement setDownloadButton;
-    @FindBy(xpath = "//a[@href='/webstorm/whatsnew/']")
-    private WebElement whatsNewButton;
-    @FindBy(xpath = "//a[@href='/webstorm/buy/']")
-    public WebElement prisingButton;
 
-    public Boolean checkIfDownloadButtonIsClickable(){
-        LOG.info("Проверка активности кнопки загрузки");
-        return downloadButton.isEnabled();
-    }
     public WebStormPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+    public Boolean checkIfDownloadButtonIsClickable(){
+        LOG.info("Проверка активности кнопки загрузки");
+        return downloadButton.isEnabled();
     }
 
     public void transDownloadButton(){
@@ -34,8 +30,5 @@ public class WebStormPage {
         LOG.infoWithScreenshot("Переход на страницу загрузки");
     }
 
-    public void whatsNewButtonClick(){
-        whatsNewButton.click();
-        LOG.info("Переход на страницу Whats New");
-    }
+
 }
