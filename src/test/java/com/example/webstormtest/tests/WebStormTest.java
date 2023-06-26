@@ -1,15 +1,20 @@
 package com.example.webstormtest.tests;
 
 import com.example.webstormtest.AllureAttachmentManager;
+import com.example.webstormtest.MyExtension;
 import com.example.webstormtest.pages.WebStormDownloadPage;
 import com.example.webstormtest.pages.WebStormPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(MyExtension.class)
 public class WebStormTest extends BaseTest{
     private WebStormPage WebStormPage;
+    private WebStormDownloadPage WebStormDownloadPage;
     @BeforeEach
     @Override
     public void setUp(){
@@ -33,7 +38,6 @@ public class WebStormTest extends BaseTest{
     @DisplayName("Проверим, кнопка скачивания .dmg для apple silicon активна")
     public void siliconDmgButtonCheck(){
         WebStormPage.transDownloadButton();
-        WebStormDownloadPage WebStormDownloadPage = new WebStormDownloadPage(getDriver());
         WebStormDownloadPage.switchToMacOSTab();
         WebStormDownloadPage.clickDmgButton();
         assertTrue(WebStormDownloadPage.checkIfSiliconDmgClikable(), "Кнопка скачивания не активна");
