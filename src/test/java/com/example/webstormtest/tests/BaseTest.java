@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.time.Duration;
 
 public class BaseTest {
@@ -13,20 +12,26 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
+        getDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+    public static WebDriver getDriver(){
+        if (driver == null)
+            createDriver();
+        if(driver.toString().contains("(null)"))
+            createDriver();
+        return driver;
+    }
+    private static void createDriver(){
         ChromeOptions options = new ChromeOptions();
         // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    }
-
-    public static WebDriver getDriver(){
-        return driver;
     }
 
     @AfterEach
-    public void tearDown() {
+    public void tearDown(){
         driver.quit();
     }
 }

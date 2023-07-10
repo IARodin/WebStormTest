@@ -14,7 +14,6 @@ public class ChooseYourRegion {
 
     @FindBy(xpath = "//button[@data-test='footer-country-button']")
     private WebElement countryButton;
-
     @FindBy(xpath = "//input[@data-test='search-input']")
     private WebElement entryField;
     @FindBy(xpath = "//li/span[@class='wt-list-item__content']")
