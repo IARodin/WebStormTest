@@ -10,10 +10,12 @@ import org.slf4j.LoggerFactory;
 public class AccountPage {
     public final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(AccountPage.class));
     WebDriver driver;
-    public AccountPage(WebDriver driver){
+
+    public AccountPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = "//input[@placeholder='Your email address']")
     private WebElement inputEmailAddress;
     @FindBy(xpath = "//button[contains(text(), 'Sign Up')]")
@@ -28,22 +30,24 @@ public class AccountPage {
     private WebElement inputPassword;
     @FindBy(xpath = "//button[contains(text(), 'Sign In')]")
     private WebElement buttonSignIn;
-    @FindBy(xpath = "//div[@class=\"js-auth-dialog-div-errors text-danger\"][contains(text(), 'Incorrect username and/or password')]")
+    @FindBy(xpath = "//div[@class=\"js-auth-dialog-div-errors text-danger\"][contains(text(), 'Your username or password is incorrect.')]")
     public WebElement messageIncorrectUnAndPass;
 
-    public void inputTrueEmailAddress(){
+    public void inputTrueEmailAddress() {
         inputEmailAddress.sendKeys("sssdaxssss@mail.com");
         LOG.infoWithScreenshot("Вводим верный email адрес");
         buttonSignUp.click();
         LOG.info("Нажимаем клавишу создания акк.");
     }
-    public void inputNotTrueEmailAddress(){
+
+    public void inputNotTrueEmailAddress() {
         inputEmailAddress.sendKeys("_Sasdasdedasda@s.ss");
         LOG.infoWithScreenshot("Вводим заведомо не верный email адрес");
         buttonSignUp.click();
         LOG.info("Нажимаем клавишу создания акк.");
     }
-    public void inputUserNameAndPassword(){
+
+    public void inputUserNameAndPassword() {
         inputUserName.sendKeys("ssddasd");
         inputPassword.sendKeys("sadasdas");
         LOG.infoWithScreenshot("Вводим заведомо не верный email адрес и пароль");

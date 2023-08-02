@@ -18,8 +18,8 @@ public class LearnPage {
     @FindBy(xpath = "//span[@class='menu-second-title-box__title wt-h3']")
     public WebElement buttonToWebStormPage;
 
-    public LearnPage(WebDriver driver){
-       this.driver = driver;
+    public LearnPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -27,12 +27,14 @@ public class LearnPage {
         buttonLearn.click();
         LOG.infoWithScreenshot("Переход на страницу Learn");
     }
-    public boolean checkGetStartedIsVisible(){
+
+    public boolean checkGetStartedIsVisible() {
         LOG.info("Проверка видимости блока 'Get Started'");
         return buttonLearn.isDisplayed();
     }
-    public boolean checkButtonToWebStormPage(){
-        LOG.info("Проверка ч");
+
+    public boolean checkButtonToWebStormPage() {
+        LOG.info("Проверка что кнопка 'WebStorm' активна");
         return buttonToWebStormPage.isEnabled();
     }
 

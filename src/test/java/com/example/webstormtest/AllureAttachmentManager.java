@@ -7,7 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class AllureAttachmentManager {
     @Attachment(value = "Screenshot", type = "image/png")
-    public static byte[] screenshot(){
+    public static byte[] screenshot() {
         return ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }

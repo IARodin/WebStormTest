@@ -40,47 +40,79 @@ public class WebStormPage {
     private WebElement webStormInTopMenu;
     @FindBy(xpath = "//a[@data-test='site-header-profile-action']")
     private WebElement buttonAccountPage;
+    @FindBy(xpath = "//button[@class=\"jetbrains-cookies-banner-3-button jetbrains-cookies-banner-3-button--accent jetbrains-cookies-banner-3__action\"]")
+    private WebElement windowCookies;
+    @FindBy(xpath = "//a[@aria-label='Navigate to main page']")
+    private WebElement buttonToMainPage;
 
-    public WebStormPage(WebDriver driver){
+    public WebStormPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public Boolean checkIfDownloadButtonIsClickable(){
+
+    public Boolean checkIfDownloadButtonIsClickable() {
         LOG.info("Проверка активности кнопки загрузки");
         return downloadButton.isEnabled();
     }
-    public void transDownloadButton(){
+
+    public void transDownloadButton() {
         setDownloadButton.click();
         LOG.infoWithScreenshot("Переход на страницу загрузки");
     }
-    public void inputEmail(){
+
+    public void inputEmail() {
         String email = "1112@sw.gnu";
         LOG.infoWithScreenshot("Вводим Email в поле");
         inputEmail.sendKeys(email);
         buttonSubmit.click();
         LOG.info("Нажимаем на клавишу Submit");
-        WebDriverWait wait  = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.invisibilityOf(buttonSubmit));
         LOG.info("Воспользуемся явным ожиданием чтобы убедиться что элемент не отображается на странице");
     }
+
+    public void waitWindowCookies() {
+        LOG.info("Используем явное ожидание баннера");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(windowCookies));
+    }
+    public String takeCurrentUrl() {
+        LOG.info("Нажимаем на элемент на странице");
+        buttonToMainPage.click();
+        String currentUrl = driver.getCurrentUrl();
+        LOG.info("Полученный адрес " + currentUrl);
+        return currentUrl;
+    }
+    public boolean acceptAll() {
+        LOG.info("Проверка, отображения кнопки 'Accept All'");
+        return windowCookies.isEnabled();
+    }
+
     public void swapLanguage() {
+        waitWindowCookies();
+        windowCookies.click();
         buttonLang.click();
         LOG.infoWithScreenshot("Нажимаем на клавишу смены языка");
         setRussian.click();
         LOG.infoWithScreenshot("Выбираем Русский язык");
     }
-    public boolean checkButtonTakeATour(){
+
+    public boolean checkButtonTakeATour() {
         LOG.infoWithScreenshot("Кнопка Take a tour активна.");
         return takeATourButton.isEnabled();
     }
-    public void clickButtonTopMenu(){
+
+    public void clickButtonTopMenu() {
         LOG.infoWithScreenshot("Открытие меню Developer Tools");
         buttonTopMenu.click();
     }
-    public boolean checkButtonWebStormInTopMenu(){
+
+    public boolean checkButtonWebStormInTopMenu() {
+        LOG.info("Проверка что кнопка WebStorm в меню Developer Tools активна");
         return buttonTopMenu.isEnabled();
     }
-    public void clickButtonAccountPage(){
+
+    public void clickButtonAccountPage() {
         LOG.info("Переход на страницу Аккаунта Jet Brains");
         buttonAccountPage.click();
     }

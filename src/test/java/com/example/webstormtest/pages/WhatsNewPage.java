@@ -16,11 +16,12 @@ public class WhatsNewPage {
     @FindBy(xpath = "//a[@href='/webstorm/buy/']")
     public WebElement prisingButton;
 
-    public WhatsNewPage(WebDriver driver){
+    public WhatsNewPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void whatsNewButtonClick(){
+
+    public void whatsNewButtonClick() {
         whatsNewButton.click();
         LOG.infoWithScreenshot("Переход на страницу Whats New");
     }

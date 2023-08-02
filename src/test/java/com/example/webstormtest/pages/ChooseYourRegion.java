@@ -23,15 +23,17 @@ public class ChooseYourRegion {
     @FindBy(xpath = "//button[@data-test='footer-country-button'][contains(text(), country)]")
     public WebElement selectedAustralia;
 
-    public ChooseYourRegion(WebDriver driver){
+    public ChooseYourRegion(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void clickCountryButton(){
+
+    public void clickCountryButton() {
         countryButton.click();
         LOG.infoWithScreenshot("Открытие окна смены региона");
     }
-    public void setCountry(){
+
+    public void setCountry() {
         entryField.sendKeys(country);
         chooseCountry.click();
         closeAfterSelected.click();

@@ -15,6 +15,7 @@ public class WebStormBlogPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = "//a[@class = 'social-footer__link rs-link rs-link_mode_classic rs-link_theme_light'][contains(text(), 'WebStorm blog')]")
     private WebElement buttonWebStormBlog;
     @FindBy(xpath = "//a[@href='/webstorm/category/webinars/']")
@@ -31,15 +32,18 @@ public class WebStormBlogPage {
         LOG.infoWithScreenshot("Переход на страницу блога Web Storm");
 
     }
+
     public void clickWebinars() {
         buttonWebinars.click();
         LOG.infoWithScreenshot(" Выбор вкладки вебинары");
     }
-    public void clickTipsAndTricks(){
+
+    public void clickTipsAndTricks() {
         tapTipsAndTricks.click();
         LOG.infoWithScreenshot("Выбор вкладки Советы и хитрости.");
     }
-    public boolean checkCard(){
+
+    public boolean checkCard() {
         LOG.info("Проверка, что карточка со про 10 лучших тем оформления видна на странице.");
         return cardBestWebStormThemes.isDisplayed();
     }

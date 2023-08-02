@@ -11,11 +11,12 @@ public class FeaturesPage {
     private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(FeaturesPage.class));
     WebDriver driver;
 
-    @FindBy(xpath = "//a[@class='wt-col-inline wt-text-2 menu-second__link wt-text-2_hardness_average menu-item'][@href='/webstorm/features/']")
+    @FindBy(css = ".menu-item + a[href='/webstorm/features/']")
     private WebElement featuresButtonPage;
     @FindBy(xpath = "//a[@class='toc-item toc-item--selected toc-item--theme-light timeline-react_link _without-control']")
     private WebElement customizableEnvironmentButton;
-    public FeaturesPage(WebDriver driver){
+
+    public FeaturesPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
@@ -26,7 +27,8 @@ public class FeaturesPage {
         customizableEnvironmentButton.click();
         LOG.infoWithScreenshot("Нажатие на клавишу  'Customizable environment' в боковом меню.");
     }
-    public boolean checkCustomizableEnvironmentButton(){
+
+    public boolean checkCustomizableEnvironmentButton() {
         LOG.info("Проверка, что кнопка 'Customizable Environment' активна");
         return customizableEnvironmentButton.isEnabled();
     }
