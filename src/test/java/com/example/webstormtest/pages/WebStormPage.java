@@ -1,14 +1,13 @@
 package com.example.webstormtest.pages;
 
 import com.example.webstormtest.AllureLogger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.LoggerFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -36,8 +35,6 @@ public class WebStormPage {
     private WebElement takeATourButton;
     @FindBy(xpath = "//button[@aria-label=\"Developer Tools: Open submenu\"][contains(text(), 'Developer Tools')]")
     private WebElement buttonTopMenu;
-    @FindBy(xpath = "//span[@class= 'rs-text-2 rs-text-2_theme_light _mainSubmenuItem__title_8wa5lj _mainSubmenuItem__titleWithLogo_kty96'][contains(text(), 'WebStorm')]")
-    private WebElement webStormInTopMenu;
     @FindBy(xpath = "//a[@data-test='site-header-profile-action']")
     private WebElement buttonAccountPage;
     @FindBy(xpath = "//button[@class=\"jetbrains-cookies-banner-3-button jetbrains-cookies-banner-3-button--accent jetbrains-cookies-banner-3__action\"]")

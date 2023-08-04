@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.LoggerFactory;
 
 public class ChooseYourRegion {
-    String country = "Australia";
+    final String country = "Australia";
     WebDriver driver;
     public static AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(ChooseYourRegion.class));
 

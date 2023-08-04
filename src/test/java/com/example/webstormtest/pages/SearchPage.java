@@ -18,9 +18,9 @@ public class SearchPage {
     private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(SearchPage.class));
     @FindBy(xpath = "//input[@placeholder='Ctrl+K for advanced search']")
     public WebElement setSearchPanel;
-    @FindBy(css = "#wt-site-header > div > div > div.wt-row.wt-row_align-items_center.wt-row_size_0 > div.wt-col-auto-fill.wt-col_align-self_stretch._siteHeader__contentPart_cxaut._siteHeader__desktopContentPart_4xk58._siteHeader__desktopContentPart_w9qou > div > div > div > div:nth-child(1) > button > svg")
+    @FindBy(css = "button[aria-label='Open search']")
     private WebElement buttonSearch;
-    @FindBy(xpath = "//a[@href=\'https://www.jetbrains.com/webstorm/\']")
+    @FindBy(xpath = "//a[@href='https://www.jetbrains.com/webstorm/']")
     private WebElement resultOfSearch;
 
     public SearchPage(WebDriver driver) {
